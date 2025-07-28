@@ -9,7 +9,8 @@ import PostDetailPage from './pages/PostDetailPage';
 import './styles/App.css';
 
 // Change this line in src/App.js
-const API_URL = 'https://blog-backend-xxxx.onrender.com/api'; // Replace with your live backend URL // URL of our backend server
+// TODO: Replace with your LIVE backend URL from Render
+const API_URL = 'https://blog-backend-tfip.onrender.com';/ Replace with your live backend URL // URL of our backend server
 
 function App() {
   const [posts, setPosts] = useState([]);
