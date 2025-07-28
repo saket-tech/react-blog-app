@@ -4,20 +4,22 @@ const cors = require('cors');
 const { Pool } = require('pg');
 
 const app = express();
-const port = 5001; // Port for the backend server
+// Use the port provided by Render, or 5001 for local development
+const port = process.env.PORT || 5001;
 
 // Middleware
-app.use(cors()); // Enable Cross-Origin Resource Sharing
-app.use(express.json()); // Enable parsing of JSON request bodies
+app.use(cors());
+app.use(express.json());
 
 // --- PostgreSQL Connection Setup ---
-// TODO: Update with your PostgreSQL connection details
+// The DATABASE_URL environment variable is provided by Render.
+// It includes the username, password, host, and database name.
 const pool = new Pool({
-  user: 'postgres',
-  host: 'localhost',
-  database: 'blog_app',
-  password: '7094', // Replace with your password
-  port: 5432,
+  connectionString: process.env.DATABASE_URL,
+  // Add SSL configuration for connecting to Render's database
+  ssl: {
+    rejectUnauthorized: false
+  }
 });
 
 // --- API Routes ---
@@ -99,5 +101,5 @@ app.delete('/api/posts/:id', async (req, res) => {
 
 
 app.listen(port, () => {
-  console.log(`Backend server is running on http://localhost:${port}`);
+  console.log(`Backend server is running on port ${port}`);
 });
