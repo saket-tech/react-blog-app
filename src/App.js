@@ -8,7 +8,8 @@ import EditPostPage from './pages/EditPostPage';
 import PostDetailPage from './pages/PostDetailPage';
 import './styles/App.css';
 
-const API_URL = 'http://localhost:5001/api'; // URL of our backend server
+// Change this line in src/App.js
+const API_URL = 'https://blog-backend-xxxx.onrender.com/api'; // Replace with your live backend URL // URL of our backend server
 
 function App() {
   const [posts, setPosts] = useState([]);
